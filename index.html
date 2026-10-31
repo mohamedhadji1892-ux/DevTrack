@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="DevTrack - Personal Learning Dashboard">
+
+    <title>DevTrack | Learning Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <a href="#" class="brand">
+                <span>&lt;/&gt;</span>
+                DevTrack
+            </a>
+
+            <p class="label">WORKSPACE</p>
+
+            <nav>
+                <a href="#overview" class="active">▦ &nbsp; Overview</a>
+                <a href="#tasks">✓ &nbsp; Learning Tasks</a>
+                <a href="#ideas">◇ &nbsp; Project Ideas</a>
+            </nav>
+
+            <div class="side-bottom">
+
+                <div class="tip">
+                    <b>✦ Small steps add up.</b>
+
+                    <p>
+                        Consistency beats intensity.
+                        Keep building every day.
+                    </p>
+                </div>
+
+                <div class="profile">
+                    <span>MH</span>
+
+                    <div>
+                        <b>My Workspace</b>
+                        <small>Personal learning</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main id="overview">
+
+            <!-- HEADER -->
+
+            <header>
+
+                <div>
+                    <p class="label" id="dateLabel">
+                        YOUR WORKSPACE
+                    </p>
+
+                    <h1>Learning Dashboard</h1>
+                </div>
+
+                <button class="primary" id="addTop">
+                    + Add a Task
+                </button>
+
+            </header>
+
+
+            <!-- HERO SECTION -->
+
+            <section class="hero">
+
+                <div>
+
+                    <p class="label">
+                        YOUR NEXT LEVEL STARTS HERE
+                    </p>
+
+                    <h2>
+                        Build Skills.<br>
+                        <em>Track Your Progress.</em>
+                    </h2>
+
+                    <p class="hero-copy">
+                        A focused space to organize what you're learning
+                        and turn goals into completed work.
+                    </p>
+
+                    <a href="#tasks">
+                        View My Learning Plan →
+                    </a>
+
+                </div>
+
+                <div class="hero-art">
+
+                    <div class="orbit"></div>
+
+                    <div class="code">
+
+                        <div>●　●　●</div>
+
+                        <hr>
+
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+
+                        <strong>{ }</strong>
+
+                    </div>
+
+                    <small>01 / CREATE</small>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats">
+
+                <article>
+
+                    <span>Total Tasks</span>
+
+                    <b id="total">0</b>
+
+                    <small>Across your learning plan</small>
+
+                </article>
+
+
+                <article>
+
+                    <span>Completed</span>
+
+                    <b id="completed">0</b>
+
+                    <small>Tasks you've finished</small>
+
+                </article>
+
+
+                <article>
+
+                    <span>In Progress</span>
+
+                    <b id="inProgress">0</b>
+
+                    <small>Keep the momentum</small>
+
+                </article>
+
+
+                <article>
+
+                    <span>Overall Progress</span>
+
+                    <b id="percent">0%</b>
+
+                    <div class="bar">
+                        <i id="bar"></i>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- MAIN DASHBOARD -->
+
+            <section class="columns">
+
+
+                <!-- LEARNING TASKS -->
+
+                <section class="panel" id="tasks">
+
+                    <div class="panel-head">
+
+                        <div>
+
+                            <p class="label">
+                                STAY ON TRACK
+                            </p>
+
+                            <h3>Learning Tasks</h3>
+
+                        </div>
+
+                        <button class="link-btn" id="addInline">
+                            + New Task
+                        </button>
+
+                    </div>
+
+
+                    <!-- SEARCH AND FILTER -->
+
+                    <div class="tools">
+
+                        <input
+                            id="search"
+                            type="search"
+                            placeholder="Search tasks..."
+                            aria-label="Search tasks"
+                        >
+
+                        <select id="filter" aria-label="Filter tasks">
+
+                            <option value="all">All Tasks</option>
+
+                            <option value="todo">To Do</option>
+
+                            <option value="progress">In Progress</option>
+
+                            <option value="done">Completed</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- TASK LIST -->
+
+                    <div id="taskList"></div>
+
+                    <p id="empty" class="empty" hidden>
+                        No tasks found.
+                    </p>
+
+                </section>
+
+
+                <!-- RIGHT COLUMN -->
+
+                <div class="right">
+
+
+                    <!-- PROGRESS OVERVIEW -->
+
+                    <section class="panel">
+
+                        <div class="panel-head">
+
+                            <div>
+
+                                <p class="label">
+                                    YOUR JOURNEY
+                                </p>
+
+                                <h3>Progress Overview</h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ring-wrap">
+
+                            <div class="ring" id="ring">
+
+                                <div>
+
+                                    <b id="ringPercent">0%</b>
+
+                                    <small>Completed</small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="legend">
+
+                            <span>
+                                ● Completed
+                                <b id="doneCount">0</b>
+                            </span>
+
+                            <span>
+                                ● Remaining
+                                <b id="remaining">0</b>
+                            </span>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- PROJECT IDEAS -->
+
+                    <section class="panel" id="ideas">
+
+                        <div class="panel-head">
+
+                            <div>
+
+                                <p class="label">
+                                    BUILD IN PUBLIC
+                                </p>
+
+                                <h3>Project Ideas</h3>
+
+                            </div>
+
+                            <b class="spark">✦</b>
+
+                        </div>
+
+
+                        <div class="idea">
+
+                            <span class="icon purple">⌘</span>
+
+                            <div>
+
+                                <b>Personal Portfolio</b>
+
+                                <small>Showcase your best work</small>
+
+                            </div>
+
+                            <small class="tag">IDEA</small>
+
+                        </div>
+
+
+                        <div class="idea">
+
+                            <span class="icon peach">▥</span>
+
+                            <div>
+
+                                <b>Weather Dashboard</b>
+
+                                <small>Practice APIs and async JS</small>
+
+                            </div>
+
+                            <small class="tag">IDEA</small>
+
+                        </div>
+
+
+                        <div class="idea">
+
+                            <span class="icon green">◈</span>
+
+                            <div>
+
+                                <b>Recipe Finder</b>
+
+                                <small>Practice search and filters</small>
+
+                            </div>
+
+                            <small class="tag">IDEA</small>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                DevTrack · Keep Learning, Keep Shipping.
+            </footer>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ADD TASK DIALOG -->
+
+    <dialog id="dialog">
+
+        <form id="taskForm">
+
+            <div class="dialog-head">
+
+                <div>
+
+                    <p class="label">
+                        LEARNING PLAN
+                    </p>
+
+                    <h2 id="dialogTitle">
+                        Add a Task
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="close"
+                    class="close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <input type="hidden" id="editId">
+
+
+            <label>
+
+                Task Title
+
+                <input
+                    id="title"
+                    type="text"
+                    maxlength="70"
+                    placeholder="e.g. Practice JavaScript Arrays"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+
+                Category
+
+                <select id="category">
+
+                    <option>JavaScript</option>
+
+                    <option>HTML & CSS</option>
+
+                    <option>Python</option>
+
+                    <option>PHP & SQL</option>
+
+                    <option>German</option>
+
+                    <option>Other</option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Status
+
+                <select id="status">
+
+                    <option value="todo">To Do</option>
+
+                    <option value="progress">In Progress</option>
+
+                    <option value="done">Completed</option>
+
+                </select>
+
+            </label>
+
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="secondary"
+                    id="cancel"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="primary"
+                    type="submit"
+                >
+                    Save Task
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+    <!-- NOTIFICATION -->
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+
+</body>
+
+</html>
